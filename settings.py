@@ -3,10 +3,10 @@ import os
 # AssemblyAI API
 UPLOAD_ENDPOINT = 'https://api.assemblyai.com/v2/upload'
 TRASCRIPT_ENDPOINT = "https://api.assemblyai.com/v2/transcript"
-AUTHORIZATION_KEY = 'SECRET_CODE'
+AUTHORIZATION_KEY = '2a8d7f05cc4d41c0ad1f1f72618a4ead'
 
 # Stability API
-STABILITY_KEY = 'STABILITY_API_KEY'
+STABILITY_KEY = 'sk-x1K5bl7rNCGx6pXF0cJUHcduT05q57IvpHMPiVK2GsYHYF9h'
 
 # The Root Directory of the project
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))

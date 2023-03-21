@@ -3,6 +3,7 @@ import pyaudio, wave, pylab
 import numpy as np
 import librosa, librosa.display
 import matplotlib.pyplot as plt
+import speech_recognition as sr
 # from pygame import mixer
 from scipy.io.wavfile import write
 from settings import DURATION, DEFAULT_SAMPLE_RATE, MAX_INPUT_CHANNELS, \
@@ -46,14 +47,9 @@ class Sound(object):
 
     def record(self):
         # start Recording
+
         self.audio = pyaudio.PyAudio()
-        stream = self.audio.open(
-                        format=self.format,
-                        channels=self.channels,
-                        rate=self.sample_rate,
-                        input=True,
-                        frames_per_buffer=self.chunk,
-                        input_device_index=self.device)
+        stream = self.audio.open( format=self.format,channels=self.channels,rate=self.sample_rate,input=True,frames_per_buffer=self.chunk,input_device_index=self.device)
         logger.info(f"Recording started for {self.duration} seconds")
         self.frames = []
         for i in range(0, int(self.sample_rate / self.chunk * self.duration)):

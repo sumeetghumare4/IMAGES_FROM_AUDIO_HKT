@@ -14,7 +14,7 @@ from src.imagine import save_image_from_prompt
 logger = logging.getLogger('app')
 
 def main():
-    title = "Getting Images from Audio"
+    title = "Room Interior from Audio"
     st.set_page_config(page_title=title,page_icon=None, layout='centered')
     st.title(title)
     image = Image.open(os.path.join(RESOURCES_DIR, 'furniture.jpg'))
@@ -33,6 +33,28 @@ def main():
             st.audio(audio_bytes, format='audio/wav')
         except:
             st.write("Please record sound first")
+
+def takeCommand():
+    """
+
+    Takes microphone input from server
+    """
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Listening ...")
+        r.pause_threshold = 1
+        audio = r.listen(source)
+
+    try:
+        print("Recognizing..")
+        query = r.recognize_google(audio, language='en-in')
+        print(f"user said:{query}\n")
+
+    except Exception as e:
+        print(e)
+        print("Say that again please..")
+        return "None"
+    return query
 
 
 
